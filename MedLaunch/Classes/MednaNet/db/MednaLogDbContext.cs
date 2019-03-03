@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Sqlite;
-
-namespace MedLaunch.Classes.MednaNet.db
+﻿namespace MedLaunch.Classes.MednaNet.db
 {
     /*
     public class MednaLogDbContext : DbContext

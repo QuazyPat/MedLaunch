@@ -1,13 +1,10 @@
 ﻿using FuzzyString;
 using MedLaunch.Classes.GamesLibrary;
-using MedLaunch.Classes.Scraper.DBModels;
 using MedLaunch.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MedLaunch.Classes.Scraper
 {

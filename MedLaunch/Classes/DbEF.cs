@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MedLaunch.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using MedLaunch.Models;
-using Microsoft.Data.Entity;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using System.Text.RegularExpressions;
 
 namespace MedLaunch.Classes
 {

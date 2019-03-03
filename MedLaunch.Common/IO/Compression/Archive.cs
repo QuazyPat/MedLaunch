@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using MedLaunch.Common.Eventing.CustomEventArgs;
-using MedLaunch.Common.Crypto;
-using MedLaunch.Common.Streams;
-using System.IO.Compression;
-using System.Security.Cryptography;
 using SevenZip;
 
 namespace MedLaunch.Common.IO.Compression

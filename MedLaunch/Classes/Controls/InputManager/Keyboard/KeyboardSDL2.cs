@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SlimDX;
-using SlimDX.DirectInput;
-using MahApps.Metro.SimpleChildWindow;
-using System.Windows.Interop;
 
 namespace MedLaunch.Classes.Controls
 {
-    
+
     public class KeyboardTranslationSDL2 : IKeyboardTranslator
     {
         public List<DxKeys> dxKeys { get; set; }

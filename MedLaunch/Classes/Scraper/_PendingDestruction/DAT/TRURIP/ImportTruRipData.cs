@@ -1,12 +1,9 @@
-﻿using MedLaunch.Classes.Scraper.DAT.TOSEC.Models;
-using MedLaunch.Classes.Scraper.DAT.TRURIP.Models;
+﻿using MedLaunch.Classes.Scraper.DAT.TRURIP.Models;
 using MedLaunch.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace MedLaunch.Classes.Scraper.DAT.TRURIP

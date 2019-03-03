@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using MedLaunch.Models;
-using MedLaunch.Classes.Scanning;
 using DiscTools;
 using MedLaunch.Common.IO.Compression;
 

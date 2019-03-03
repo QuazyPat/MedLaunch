@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Management; // need to add System.Management to your project references.
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedLaunch.Classes.Controls.InputManager
 {

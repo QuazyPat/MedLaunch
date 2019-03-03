@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 using MedLaunch.Models;
 using System.Diagnostics;
-using System.Windows;
 
 namespace MedLaunch.Classes
 {

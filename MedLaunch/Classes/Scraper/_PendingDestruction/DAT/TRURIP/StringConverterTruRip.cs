@@ -1,11 +1,7 @@
-﻿using MedLaunch.Classes.Scraper.DAT.NOINTRO.Models;
-using MedLaunch.Classes.Scraper.DAT.TOSEC.Models;
-using MedLaunch.Classes.Scraper.DAT.TRURIP.Models;
-using System;
+﻿using MedLaunch.Classes.Scraper.DAT.TRURIP.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MedLaunch.Classes.Scraper.DAT.TRURIP
 {

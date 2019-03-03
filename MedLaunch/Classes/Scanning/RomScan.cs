@@ -1,16 +1,12 @@
 ﻿using MedLaunch.Common;
 using MahApps.Metro.Controls.Dialogs;
 using MedLaunch.Classes.DAT;
-using MedLaunch.Classes.GamesLibrary;
 using MedLaunch.Classes.IO;
-using MedLaunch.Classes.Scraper.DAT.Models;
 using MedLaunch.Common.Eventing.Listeners;
 using MedLaunch.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedLaunch.Classes.Scanning
 {

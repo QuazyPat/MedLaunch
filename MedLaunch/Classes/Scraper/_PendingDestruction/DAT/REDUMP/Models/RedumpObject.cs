@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MedLaunch.Classes.Scraper.DAT.REDUMP.Models
+﻿namespace MedLaunch.Classes.Scraper.DAT.REDUMP.Models
 {
     public class RedumpObject
     {

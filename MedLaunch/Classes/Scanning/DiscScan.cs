@@ -1,18 +1,13 @@
 ﻿using MahApps.Metro.Controls.Dialogs;
 using MedLaunch.Classes.DAT;
-using MedLaunch.Classes.GamesLibrary;
 using MedLaunch.Classes.IO;
-using MedLaunch.Classes.Scraper.DAT.Models;
-using MedLaunch.Classes.Scraper.PSXDATACENTER;
 using MedLaunch.Models;
 using Microsoft.Win32;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MedLaunch.Classes.Scanning

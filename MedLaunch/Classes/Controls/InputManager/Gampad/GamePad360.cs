@@ -4,8 +4,6 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using SlimDX.XInput;
 using System.Windows.Interop;
-using Microsoft;
-using System.Windows;
 
 #pragma warning disable 169
 #pragma warning disable 414

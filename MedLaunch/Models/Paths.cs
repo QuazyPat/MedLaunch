@@ -1,14 +1,10 @@
-﻿using Microsoft.Data.Entity;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using MedLaunch.Common;
 using System.IO;
 using System.Windows;
 using MedLaunch.Classes;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedLaunch.Models
 {

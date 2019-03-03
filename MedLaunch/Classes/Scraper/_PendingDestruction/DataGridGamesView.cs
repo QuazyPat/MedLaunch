@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Migrations;
-using MedLaunch.Models;
-using MedLaunch.Classes;
-using System.ComponentModel;
-
-namespace MedLaunch.Classes
-{  
+﻿namespace MedLaunch.Classes
+{
     /*
     public class DataGridGamesView : INotifyPropertyChanged
     {

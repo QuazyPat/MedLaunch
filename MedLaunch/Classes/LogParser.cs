@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Management;
 using System.Threading;
 
 namespace MedLaunch.Classes

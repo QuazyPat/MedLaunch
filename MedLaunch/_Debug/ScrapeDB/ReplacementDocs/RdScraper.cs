@@ -1,15 +1,9 @@
 ﻿using HtmlAgilityPack;
 using MahApps.Metro.Controls.Dialogs;
 using MedLaunch.Classes;
-using MedLaunch.Classes.TheGamesDB;
 using MedLaunch.Models;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedLaunch._Debug.ScrapeDB.ReplacementDocs
 {

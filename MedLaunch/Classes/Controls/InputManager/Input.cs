@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using SlimDX.DirectInput;
 using System.Runtime.Serialization;
 
 namespace MedLaunch.Classes.Controls.InputManager

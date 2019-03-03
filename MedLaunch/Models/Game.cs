@@ -1,12 +1,9 @@
 ﻿using MedLaunch.Classes;
-using MedLaunch.Classes.GamesLibrary;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MedLaunch.Models
@@ -433,7 +430,7 @@ namespace MedLaunch.Models
         {
             using (var cfDef = new MyDbContext())
             {
-                cfDef.Entry(game).State = Microsoft.Data.Entity.EntityState.Modified;
+                cfDef.Entry(game).State = EntityState.Modified;
                 cfDef.SaveChanges();
                 //GamesLibData.ForceUpdate();
                 // GameListBuilder.UpdateFlag();
@@ -445,7 +442,7 @@ namespace MedLaunch.Models
         {
             using (var cfDef = new MyDbContext())
             {
-                cfDef.Entry(game).State = Microsoft.Data.Entity.EntityState.Modified;
+                cfDef.Entry(game).State = EntityState.Modified;
                 cfDef.SaveChanges();
                 GamesLibraryVisualHandler.DoGameUpdate(new List<Game> { game });
             }

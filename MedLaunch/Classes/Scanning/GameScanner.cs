@@ -1,21 +1,7 @@
-﻿using MedLaunch.Common;
-using MedLaunch.Models;
-using System;
+﻿using MedLaunch.Models;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO.Compression;
-using System.Windows;
-using Ookii.Dialogs.Wpf;
-using Microsoft.Win32;
-using MahApps.Metro.Controls.Dialogs;
-using MedLaunch.Classes.GamesLibrary;
-using MedLaunch.Classes.IO;
-using Newtonsoft.Json;
-using System.Security.Cryptography;
 using MedLaunch.Classes.DAT;
 
 namespace MedLaunch.Classes

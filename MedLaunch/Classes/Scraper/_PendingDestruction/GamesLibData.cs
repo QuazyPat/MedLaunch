@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MedLaunch.Models;
-
-namespace MedLaunch.Classes
+﻿namespace MedLaunch.Classes
 {
     /*
     public static class GamesLibData

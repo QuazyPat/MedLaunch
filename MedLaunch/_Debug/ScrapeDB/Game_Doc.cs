@@ -1,10 +1,7 @@
 ﻿using MahApps.Metro.Controls.Dialogs;
-using Microsoft.Data.Entity;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 

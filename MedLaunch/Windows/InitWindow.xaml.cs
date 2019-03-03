@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -7,14 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 using MedLaunch.Classes;
 using MedLaunch.Models;
 using MedLaunch.Common.SQLite;
@@ -23,9 +15,7 @@ using System.Data.SQLite;
 using System.Threading;
 using System.Reflection;
 using MedLaunch.Extensions;
-using MedLaunch.Classes.GamesLibrary;
 using MedLaunch.Classes.Scraper;
-using Microsoft.Win32;
 using System.IO;
 
 namespace MedLaunch

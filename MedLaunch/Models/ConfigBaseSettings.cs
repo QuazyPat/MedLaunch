@@ -1,16 +1,14 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using MedLaunch.Classes;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MedLaunch.Classes;
-using System.Windows.Controls;
-using System.Windows;
-using Microsoft.Data.Entity;
 using System.Reflection;
-using MahApps.Metro.Controls;
-using Xceed.Wpf.Toolkit;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using Xceed.Wpf.Toolkit;
 
 namespace MedLaunch.Models
 {
@@ -1875,7 +1873,7 @@ namespace MedLaunch.Models
             // set defaults for this config
             using (var cfDef = new MyDbContext())
             {
-                cfDef.Entry(defaults).State = Microsoft.Data.Entity.EntityState.Modified;
+                cfDef.Entry(defaults).State = EntityState.Modified;
                 cfDef.SaveChanges();
             }
         }
@@ -1943,7 +1941,7 @@ namespace MedLaunch.Models
             // set defaults for this config
             using (var cfDef = new MyDbContext())
             {
-                cfDef.Entry(config).State = Microsoft.Data.Entity.EntityState.Modified;
+                cfDef.Entry(config).State = EntityState.Modified;
                 cfDef.SaveChanges();
                 cfDef.Dispose();
             }
@@ -1972,7 +1970,7 @@ namespace MedLaunch.Models
             using (var cfDef = new MyDbContext())
             {
 
-                cfDef.Entry(Config).State = Microsoft.Data.Entity.EntityState.Modified;
+                cfDef.Entry(Config).State = EntityState.Modified;
                 cfDef.SaveChanges();
             }
         }

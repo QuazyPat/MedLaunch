@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MedLaunch.Classes.Scraper.DAT.TRURIP.Models
+﻿namespace MedLaunch.Classes.Scraper.DAT.TRURIP.Models
 {
     public class TruRipObject
     {

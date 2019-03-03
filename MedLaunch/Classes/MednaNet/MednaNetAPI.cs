@@ -2,14 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MednaNetAPIClient;
 using MednaNetAPIClient.Models;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
-using MedLaunch.Classes.MednaNet.db;
 using System.Collections.Concurrent;
 
 namespace MedLaunch.Classes.MednaNet

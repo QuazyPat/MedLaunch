@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Modifies the MedLaunch splashscreen to include the latest version number and build date

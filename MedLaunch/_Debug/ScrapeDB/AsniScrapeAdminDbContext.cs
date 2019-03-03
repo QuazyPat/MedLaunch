@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Data.Entity;
-using Microsoft.Data.Sqlite;
-using MedLaunch.Classes;
-using System.Collections;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedLaunch._Debug.ScrapeDB
 {

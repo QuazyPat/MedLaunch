@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MedLaunch.Classes.IO
+﻿namespace MedLaunch.Classes.IO
 {
     public class Hex
     {

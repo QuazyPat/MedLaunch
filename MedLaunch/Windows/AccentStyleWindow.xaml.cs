@@ -8,7 +8,6 @@ using MahApps.Metro;
 using MahApps.Metro.Controls;
 using MedLaunch.Models;
 using System.Windows.Media.Imaging;
-using Ookii.Dialogs.Wpf;
 using Microsoft.Win32;
 
 namespace MedLaunch
