@@ -1,22 +1,22 @@
-﻿using System;
+﻿using MedLaunch.Classes;
+using MedLaunch.Classes.Scraper;
+using MedLaunch.Common.SQLite;
+using MedLaunch.Extensions;
+using MedLaunch.Models;
+using Microsoft.Data.Sqlite;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
-using MedLaunch.Classes;
-using MedLaunch.Models;
-using MedLaunch.Common.SQLite;
-using Newtonsoft.Json;
-using System.Data.SQLite;
-using System.Threading;
-using System.Reflection;
-using MedLaunch.Extensions;
-using MedLaunch.Classes.Scraper;
-using System.IO;
 
 namespace MedLaunch
 {
@@ -265,7 +265,6 @@ namespace MedLaunch
             string currtime = DateTime.Now.ToString("yyyyMMddHHmmss");
             string newfileName = @"Data\Settings\MedLaunch_" + dbVersion + "_" + currtime + ".db";
 
-            SQLiteConnection.ClearAllPools();
             // attempt database rename
             System.GC.Collect();
             System.GC.WaitForPendingFinalizers();

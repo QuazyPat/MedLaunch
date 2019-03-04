@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Data.SQLite;
-using System.Data.Common;
-using System.Data;
-using System.IO;
 
 namespace MedLaunch.Common.SQLite
 {
@@ -29,20 +29,20 @@ namespace MedLaunch.Common.SQLite
         {
             string dbPath = @"Data\Settings\MedLaunch.db";
             // create System.Data.SQLite connection
-            string connString = "Data Source=" + AppDomain.CurrentDomain.BaseDirectory + dbPath + "; Pooling=False;";
+            string connString = "Data Source=" + AppDomain.CurrentDomain.BaseDirectory + dbPath + ";";
 
             string dbVersion = "";
             // connect to database and retreive the current version
-            using (SQLiteConnection conn = new SQLiteConnection(connString))
+            using (SqliteConnection conn = new SqliteConnection(connString))
             {
                 StringBuilder query = new StringBuilder();
                 query.Append("SELECT dbVersion ");
                 query.Append("FROM Versions ");
                 query.Append("WHERE versionId = 1");
-                using (SQLiteCommand cmd = new SQLiteCommand(query.ToString(), conn))
+                using (SqliteCommand cmd = new SqliteCommand(query.ToString(), conn))
                 {
                     conn.Open();
-                    using (SQLiteDataReader dr = cmd.ExecuteReader())
+                    using (SqliteDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
@@ -57,7 +57,7 @@ namespace MedLaunch.Common.SQLite
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-            SQLiteConnection.ClearAllPools();
+
             GC.Collect();
             GC.WaitForPendingFinalizers();
 
@@ -98,7 +98,7 @@ namespace MedLaunch.Common.SQLite
                 // iterate through top level list
                 foreach (List<Data> list in rows)
                 {
-                    using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=" + AppDomain.CurrentDomain.BaseDirectory + @"Data\Settings\MedLaunch.db"))
+                    using (SqliteConnection conn = new SqliteConnection(@"Data Source=" + AppDomain.CurrentDomain.BaseDirectory + @"Data\Settings\MedLaunch.db"))
                     {
 
 
@@ -174,7 +174,7 @@ namespace MedLaunch.Common.SQLite
 
                     table.Columns = columns;
 
-                    using (SQLiteConnection conn = new SQLiteConnection(@"Data Source=" + dbPath + "; Pooling=False; Read Only=True;"))
+                    using (SqliteConnection conn = new SqliteConnection(@"Data Source=" + dbPath + "; Pooling=False; Read Only=True;"))
                     {
                         StringBuilder query = new StringBuilder();
                         // build select query with our known columns
@@ -199,10 +199,10 @@ namespace MedLaunch.Common.SQLite
 
                         List<Data> DataList = new List<Data>();
 
-                        using (SQLiteCommand cmd = new SQLiteCommand(query.ToString(), conn))
+                        using (SqliteCommand cmd = new SqliteCommand(query.ToString(), conn))
                         {
                             conn.Open();
-                            using (SQLiteDataReader dr = cmd.ExecuteReader())
+                            using (SqliteDataReader dr = cmd.ExecuteReader())
                             {
                                 while (dr.Read())
                                 {
@@ -233,7 +233,7 @@ namespace MedLaunch.Common.SQLite
                         table.Data = DataList;
 
                     }
-                    SQLiteConnection.ClearAllPools();
+
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
                     tables.Add(table);

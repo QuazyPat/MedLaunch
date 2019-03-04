@@ -1,8 +1,8 @@
-﻿using System;
-using System.Text;
-using System.Data.SQLite;
-using System.IO;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace MedLaunch.Classes
@@ -28,16 +28,16 @@ namespace MedLaunch.Classes
             string dbVersion = "";
             string appVersion = VersionChecker.ReturnApplicationVersion();
             // connect to database and retreive the current version
-            using (SQLiteConnection conn = new SQLiteConnection(connString))
+            using (SqliteConnection conn = new SqliteConnection(connString))
             {
                 StringBuilder query = new StringBuilder();
                 query.Append("SELECT dbVersion ");
                 query.Append("FROM Versions ");
                 query.Append("WHERE versionId = 1");
-                using (SQLiteCommand cmd = new SQLiteCommand(query.ToString(), conn))
+                using (SqliteCommand cmd = new SqliteCommand(query.ToString(), conn))
                 {
                     conn.Open();
-                    using (SQLiteDataReader dr = cmd.ExecuteReader())
+                    using (SqliteDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
