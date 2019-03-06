@@ -210,7 +210,6 @@
     </Controls:MetroWindow.TitleTemplate>
     <Controls:MetroWindow.LeftWindowCommands>
         <Controls:WindowCommands Margin="0">
-            <!--<Button x:Name="btnViewMednafenLogFile" Content="Open Mednafen Log" Click="btnViewMednafenLogFile_Click" /><Button x:Name="btnChangeColorScheme" Content="Change Colour Scheme" Click="btnChangeColorScheme_Click" />-->
             <Button Click="TopMenu_Click" Content="File" ContextMenuService.IsEnabled="False">
                 <Button.ContextMenu>
                     <ContextMenu>
@@ -218,29 +217,9 @@
                                   Click="manualLocateLaunchGame_Click"
                                   Header="Locate and Launch a Game (using configs on disk)"
                                   ToolTip="Manually browse to a ROM, disc image or M3U file and launch this with Mednafen using the saved MedLaunch config options. No game stats will be saved and this game will not be added to the games library." />
+                        <MenuItem Header="Save All Configs To Disk" ToolTip="Exports all configs from the MedLaunch database to system-specific config files in the Mednafen directory" />
                         <Separator Margin="0" Padding="0" BorderThickness="0.2" />
                         <MenuItem Click="menuQuitMedLaunch_Click" Header="Quit MedLaunch" />
-                    </ContextMenu>
-                </Button.ContextMenu>
-            </Button>
-            <Button Click="TopMenu_Click"
-                    Content="Configs"
-                    ContextMenuService.IsEnabled="False"
-                    Visibility="{Binding Source={x:Static diag:Debugger.IsAttached}, Converter={StaticResource BoolToVisibilityConverter}}">
-                <Button.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Save All Configs To Disk" ToolTip="Exports all configs from the MedLaunch database to system-specific config files in the Mednafen directory" />
-                    </ContextMenu>
-                </Button.ContextMenu>
-            </Button>
-            <Button Click="TopMenu_Click" Content="Tools" ContextMenuService.IsEnabled="False">
-                <Button.ContextMenu>
-                    <ContextMenu>
-                        <!--<MenuItem Header="Scanner"><MenuItem Header="Rescan ALL ROM Folders" Click="RescanRoms"  /><Separator BorderThickness="0.2" Padding="0" Margin="0" /><MenuItem x:Name="MenuScanRoms11" Header="Rescan NES" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms12" Header="Rescan SNES" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms10" Header="Rescan SMS" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms4" Header="Rescan MD" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms7" Header="Rescan PCE" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms14" Header="Rescan VB" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms6" Header="Rescan NGP" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms15" Header="Rescan WSWAN" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms1" Header="Rescan GB" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms2" Header="Rescan GBA" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms5" Header="Rescan GG" Click="ScanRoms_Click" /><MenuItem x:Name="MenuScanRoms3" Header="Rescan LYNX" Click="ScanRoms_Click" /></MenuItem>-->
-                        <MenuItem Name="AuditScrapedData"
-                                  Click="AuditScrapedData_Click"
-                                  Header="Audit Scraped Data Folder"
-                                  ToolTip="Show a list of game data that has been scraped along with system and game title" />
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
@@ -257,34 +236,23 @@
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
-            <Button Click="TopMenu_Click" Content="Logs" ContextMenuService.IsEnabled="False">
+            <Button Click="TopMenu_Click" Content="Tools" ContextMenuService.IsEnabled="False">
                 <Button.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Click="btnViewMednafenLogFile_Click" Header="View Mednafen Log (stdout.txt)" />
-                        <MenuItem Click="btnViewMednafenExFile_Click" Header="View MedLaunch Exception Log (Exceptions.log)" />
+                        <MenuItem Header="MedLaunch ToolTips">
+                            <MenuItem Click="btnGenerateToolTips_Click" Header="Generate tooltips JSON" />
+                            <MenuItem Click="btnPopToolTips_Click" Header="Populate ToolTips (kinda works - best to restart launcher)" />
+                        </MenuItem>
+                        <MenuItem Header="Misc">
+                            <MenuItem Name="disctest" Click="disctest_Click" Header="Disc test" />
+                            <MenuItem Name="UCONtest" Click="UCONtest_Click" Header="Ucon64 Test" />
+                            <MenuItem Name="UCONConvertSmd" Click="UCONConvertSmd_Click" Header="Ucon 64 test smd convert" />
+                            <MenuItem Name="testarchiving" Click="testarchiving_Click" Header="Archive test" />
+                        </MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
-        </Controls:WindowCommands>
-    </Controls:MetroWindow.LeftWindowCommands>
-    <Controls:MetroWindow.RightWindowCommands>
-        <Controls:WindowCommands>
-            <TextBlock Name="rightMenuLabel"
-                       Margin="8,-1,8,0"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       FontFamily="{DynamicResource HeaderFontFamily}"
-                       FontSize="13"
-                       FontWeight="Light"
-                       TextTrimming="CharacterEllipsis" />
-            <Button Name="tvview"
-                    Click="tvview_Click"
-                    Content="TV VIEW"
-                    Visibility="{Binding Source={x:Static diag:Debugger.IsAttached}, Converter={StaticResource BoolToVisibilityConverter}}" />
-            <Button Click="TopMenu_Click"
-                    Content="Debug"
-                    ContextMenuService.IsEnabled="False"
-                    Visibility="{Binding Source={x:Static diag:Debugger.IsAttached}, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Button Click="TopMenu_Click" Content="Admin" ContextMenuService.IsEnabled="False">
                 <Button.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="ScrapeDB (Admin)">
@@ -326,28 +294,37 @@
                             <MenuItem Name="popCRCTOSEC" Click="popCRCTOSEC_Click" Header="Populate CRC32 hashes from tosec datfiles" />
                             <MenuItem Name="popCRCNOINTRO" Click="popCRCNOINTRO_Click" Header="Populate CRC32 hashes from nointro datfiles" />
                         </MenuItem>
+                        <MenuItem Name="AuditScrapedData"
+                                  Click="AuditScrapedData_Click"
+                                  Header="Audit Scraped Data Folder"
+                                  ToolTip="Show a list of game data that has been scraped along with system and game title" />
                         <!--<MenuItem Header="Scraper Source Operations"><MenuItem Header="Download list of PlatformGames from thegamesdb.net (Update TheGamesDB.json)" Click="ScrapeGetAllPlatformGames_Click"/><MenuItem Header="Download list of PlatformGames from mobygames (Update MobyGames.json)" Click="btnmobyPlatformList_Click"/><Separator BorderThickness="0.2" Padding="0" Margin="0" /><MenuItem Header="Combine sets and generate new master json (manual choice on multiple selections using word match counts)" Click="btnCombineManualnonleven_Click"/><MenuItem Header="Combine sets and generate new master json (manual choice on multiple selections using Levenshtein)" Click="btnCombineManual_Click"/><MenuItem Header="[CAUTION!] Combine sets and generate new master json" Click="btnCombine_Click"/><Separator BorderThickness="0.2" Padding="0" Margin="0" /><MenuItem Header="Parse gamesdatabase.org list of manuals and manually match them" Click="btnCombineGamesDatabaseOrgManuals_Click"/><MenuItem Header="Parse replacement docs list of manuals and manually match them (auto on exact match)" Click="btnParseRDList_Click"/></MenuItem>-->
                         <!--<MenuItem Header="DAT Functions"><MenuItem Header="Build master information file from DATs (tosec / nointro etc)" Click="btnBuildFromDat_Click"/><MenuItem Header="Populate entries in the master DAT that do not have date information" Click="btnmatchDATyears_Click"/><MenuItem Header="Build Saturn Games List JSON" Click="buildSaturnJson_Click"/><MenuItem Header="Scrape PSX Games from PSXDATACENTER into json (initial list) - destructive" Click="buildPsxJson_Click"/><MenuItem Header="Populate PSXDATACENTER json with more advanced details (non-destructive)" Click="popPsxJson_Click"/></MenuItem>-->
-                        <MenuItem Header="MedLaunch ToolTips">
-                            <MenuItem Click="btnGenerateToolTips_Click" Header="Generate tooltips JSON" />
-                            <MenuItem Click="btnPopToolTips_Click" Header="Populate ToolTips (kinda works - best to restart launcher)" />
-                        </MenuItem>
-                        <MenuItem Header="Misc">
-                            <MenuItem Name="disctest" Click="disctest_Click" Header="Disc test" />
-                            <MenuItem Name="UCONtest" Click="UCONtest_Click" Header="Ucon64 Test" />
-                            <MenuItem Name="UCONConvertSmd" Click="UCONConvertSmd_Click" Header="Ucon 64 test smd convert" />
-                            <MenuItem Name="testarchiving" Click="testarchiving_Click" Header="Archive test" />
+                        <MenuItem Header="Logs">
+                            <MenuItem Click="btnViewMednafenLogFile_Click" Header="View Mednafen Log (stdout.txt)" />
+                            <MenuItem Click="btnViewMednafenExFile_Click" Header="View MedLaunch Exception Log (Exceptions.log)" />
                         </MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.LeftWindowCommands>
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <TextBlock Name="rightMenuLabel"
+                       Margin="8,-1,8,0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       FontFamily="{DynamicResource HeaderFontFamily}"
+                       FontSize="13"
+                       FontWeight="Light"
+                       TextTrimming="CharacterEllipsis" />
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Grid x:Name="RootGrid">
         <Grid.LayoutTransform>
             <ScaleTransform x:Name="mainScaleTransform" CenterX="0" CenterY="0" />
         </Grid.LayoutTransform>
-        <!--<Grid.Background><ImageBrush ImageSource="/Data/Graphics/medicon.png" Opacity="0.1" TileMode="None" ViewboxUnits="Absolute" Viewport="0,0,32,32" /></Grid.Background>-->
         <TabControl Background="Transparent" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Games" Style="{StaticResource MetroTabItemCustom}">
                 <Grid x:Name="grdGameLibrary">
@@ -358,7 +335,6 @@
                         <ColumnDefinition Name="gsRight" Width="Auto" />
                         <ColumnDefinition Name="sidebarColumn" Width="350" MaxWidth="1050" />
                     </Grid.ColumnDefinitions>
-                    <!--<TextBlock FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Left side</TextBlock>-->
                     <WrapPanel x:Name="wpGamesList"
                                Grid.Column="0"
                                Margin="0"
@@ -763,10 +739,8 @@
                                 </StackPanel>
                             </Expander>
                         </Border>
-                        <!--<Border Style="{StaticResource Borders1}" Margin="0" Grid.Column="0"><Expander IsExpanded="True" BorderThickness="0" Header="Misc" ><StackPanel x:Name="spGlobalSettings"><CheckBox x:Name="chkEnableNetplay" Checked="chkEnableNetplay_Checked" Unchecked="chkEnableNetplay_Unchecked">Enable Netplay</CheckBox><CheckBox x:Name="chkFullScreen" Checked="chkFullScreen_Checked" Unchecked="chkFullScreen_Unchecked">Play Fullscreen</CheckBox><CheckBox x:Name="chkBypassConfig" Checked="chkBypassConfig_Checked" Unchecked="chkBypassConfig_Unchecked"><AccessText TextWrapping="Wrap" Text="Bypass Launcher Config"/></CheckBox></StackPanel></Expander></Border>-->
                     </WrapPanel>
                     <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
-                    <!--<TextBlock Grid.Column="2" FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">Right side</TextBlock> -->
                     <Grid Grid.Column="2" Margin="10">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -823,9 +797,7 @@
                                     </UniformGrid>
                                 </Border>
                             </Grid>
-                            <!--  ItemsSource="{Binding DataCollection, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding Source={x:Static Application.Current}, Mode=OneWay, Path=GamesLibrary}"  -->
                             <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" />
-                            <!--  ItemsSource="{Binding FilteredSet, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding Source={x:Static Application.Current}, Path=GamesList}"  -->
                             <local:MedDataGrid x:Name="dgGameList"
                                                Grid.Row="2"
                                                exts:FocusExtension.IsFocused="{Binding DataGridFocused, Mode=TwoWay}"
@@ -860,7 +832,6 @@
                                                         Width="190"
                                                         Binding="{Binding Game, Converter={StaticResource CaseConverter}}"
                                                         Header="Game" />
-                                    <!--<DataGridTextColumn Header="DAT Name" Binding="{Binding DatName}" />-->
                                     <DataGridTextColumn x:Name="glCol3"
                                                         Width="100"
                                                         Binding="{Binding System}"
@@ -870,9 +841,7 @@
                                                             Binding="{Binding Favorite}"
                                                             ElementStyle="{StaticResource MetroCheckBoxDataGrid}"
                                                             Header="Fav" />
-                                    <!--<DataGridTemplateColumn x:Name="glCol5" Header="Fav"><DataGridTemplateColumn.CellTemplate><DataTemplate><Viewbox><Controls:ToggleSwitch IsChecked="{Binding Favorite}" OnSwitchBrush="{DynamicResource AccentColorBrush}" /></Viewbox></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>-->
                                     <DataGridTextColumn x:Name="glCol6" Binding="{Binding Country, Converter={StaticResource CountryConverter}}" Header="Country" />
-                                    <!--<DataGridTextColumn Header="Language" Binding="{Binding Language}" />-->
                                     <DataGridTextColumn x:Name="glCol7"
                                                         Binding="{Binding Year, Converter={StaticResource DateConverter}}"
                                                         Header="Year"
@@ -2737,7 +2706,6 @@
                                             <Button x:Name="btnScrapingReScrape" Click="btnScrapingReScrape_Click" ToolTip="Re-scrape data for this game using currently defined settings">Re-Scrape Game</Button>
                                             <Button x:Name="btnInterogateRom" Click="examineRom_Click" ToolTip="Manually interrogate game">View/Edit Game Data</Button>
                                             <Button x:Name="btnScrapingUnlinkGame" Click="btnScrapingUnlinkGame_Click" ToolTip="Removes the link between the selected game and the downloaded data">Unlink Scraped Data</Button>
-                                            <!--<Button x:Name="btnScrapingSearchOnline" ToolTip="Search thegamesdb.net for this game">Search Online</Button><Button x:Name="btnScrapingRefreshPlatformGames" ToolTip="Re-download the latest list of games (used for auto-scraping) and import them into the database" Click="ScrapeGetAllPlatformGames_Click">Refresh GamesDB Games List</Button>-->
                                             <Grid Margin="0">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="0.5*" />
@@ -2774,7 +2742,6 @@
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
-                                                <!--<Label x:Name="lblSystemName" /> -->
                                                 <Image x:Name="imgSystemImage"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
@@ -2804,15 +2771,10 @@
                                 </Border>
                             </WrapPanel>
                         </ScrollViewer>
-                        <!--<TextBlock Grid.Row="0" TextWrapping="Wrap" TextAlignment="Center" FontSize="15" TextDecorations="underline">Game and System Information</TextBlock><TextBlock Grid.Row="1" TextWrapping="Wrap">This is where the game information goes</TextBlock>-->
-                        <!--  Game System Info  -->
-                        <!--<Label Grid.Row="2" x:Name="lblSystemName" HorizontalAlignment="Center"></Label><Image HorizontalAlignment="Center" Width="100" Loaded="System_Image_Loaded" x:Name="imgSystem"/><TextBlock HorizontalAlignment="Center" Height="auto" Width="auto" x:Name="taSystemDescription" TextWrapping="Wrap"/>-->
-                        <!--  Game Info  -->
-                        <!--<TextBlock Grid.Row="3" TextWrapping="Wrap">This is where the game information goes</TextBlock>-->
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Configs" Style="{StaticResource MetroTabItemCustom}">
+            <TabItem Header="Emulators" Style="{StaticResource MetroTabItemCustom}">
                 <Grid x:Name="grdMednafenConfig">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />

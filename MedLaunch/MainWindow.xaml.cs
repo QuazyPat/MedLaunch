@@ -5893,11 +5893,11 @@ namespace MedLaunch
 
         public static Visibility IsDebug
         {
-#if DEBUG
-            get { return Visibility.Visible; }
-#else
-        get { return Visibility.Collapsed; }
-#endif
+            #if DEBUG
+                get { return Visibility.Visible; }
+            #else
+                get { return Visibility.Collapsed; }
+            #endif
         }
 
         /// <summary>

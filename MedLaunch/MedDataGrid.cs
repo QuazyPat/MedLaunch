@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using System.Windows.Controls;
 using System.ComponentModel;
+using System.Linq;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MedLaunch
 {
@@ -16,7 +16,7 @@ namespace MedLaunch
             Sorting += DataGridSorting;
         }
 
-        private MedLaunch.App _App { get; set; }
+        private App _App { get; set; }
 
         protected List<SortDescription> SortDescriptions { get; private set; }
 
@@ -24,8 +24,7 @@ namespace MedLaunch
 
         public void OnSortConstructed(SortConstructedEventArgs e)
         {
-            var handler = SortConstructed;
-            if (handler != null) handler(this, e);
+            SortConstructed?.Invoke(this, e);
         }
 
         private void DataGridSorting(object sender, DataGridSortingEventArgs e)
@@ -38,19 +37,18 @@ namespace MedLaunch
             var sd = new SortDescription(e.Column.SortMemberPath, e.Column.SortDirection.Value);
 
             if (ShiftPressed)
-                SortDescriptions =
-                    SortDescriptions.Where(x => x.PropertyName != sd.PropertyName).ToList();
+            {
+                SortDescriptions = SortDescriptions.Where(x => x.PropertyName != sd.PropertyName).ToList();
+            }
             else
             {
                 SortDescriptions.Clear();
                 _App.GamesLibrary.LibraryView.SortDescriptions.Clear();
-            }
-                
+            }              
 
             using (_App.GamesLibrary.LibraryView.DeferRefresh())
             {
                 SortDescriptions.Add(sd);
-
             
                 foreach (var s in SortDescriptions)
                 {
@@ -59,14 +57,8 @@ namespace MedLaunch
             }
 
             _App.GamesLibrary.LibraryView.View.Refresh();
-
             OnSortConstructed(new SortConstructedEventArgs(SortDescriptions));
-
-            
-               
-            //_App.GamesLibrary.LibraryView.View.Refresh();
-            
-        }
+        }//end DataGridSorting
 
         private bool ShiftPressed
         {
@@ -90,18 +82,15 @@ namespace MedLaunch
 
             IOrderedQueryable<T> result;
 
-
             var first = SortDescriptions.First();
             switch (first.Direction)
             {
                 case ListSortDirection.Ascending:
                     result = queryable.OrderBy(first.PropertyName); // uses orderby extension methods!
                     break;
-
                 case ListSortDirection.Descending:
                     result = queryable.OrderByDescending(first.PropertyName);
                     break;
-
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -116,7 +105,6 @@ namespace MedLaunch
                     case ListSortDirection.Descending:
                         result = result.ThenByDescending(sort.PropertyName);
                         break;
-
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -124,7 +112,7 @@ namespace MedLaunch
 
             return result;
         }
-    }
+    }//end SortConstructedEventArgs
 
     public class SortDescriptor
     {
@@ -151,11 +139,10 @@ namespace MedLaunch
             var desc = parts.Skip(1).Take(1).Any(p => p.StartsWith("d", StringComparison.OrdinalIgnoreCase));
             return new SortDescriptor(property, desc);
         }
-    }
+    }//end SortDescriptor
 
     public static class SortingExtensions
     {
-
         public static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> source, params string[] sortExpressions)
         {
             return source.OrderBy(sortExpressions.Select(SortDescriptor.Parse));
@@ -215,6 +202,7 @@ namespace MedLaunch
             var type = typeof(T);
             var arg = System.Linq.Expressions.Expression.Parameter(type, "x");
             System.Linq.Expressions.Expression expr = arg;
+
             foreach (var prop in props)
             {
                 // use reflection (not ComponentModel) to mirror LINQ
@@ -222,6 +210,7 @@ namespace MedLaunch
                 expr = System.Linq.Expressions.Expression.Property(expr, pi);
                 type = pi.PropertyType;
             }
+
             var delegateType = typeof(Func<,>).MakeGenericType(typeof(T), type);
             var lambda = System.Linq.Expressions.Expression.Lambda(delegateType, expr, arg);
 
@@ -234,7 +223,6 @@ namespace MedLaunch
                 .Invoke(null, new object[] { source, lambda });
 
             return (IOrderedQueryable<T>)result;
-        }
-    }
-    
+        }//end ApplyOrder
+    }//end SortingExtensions
 }
